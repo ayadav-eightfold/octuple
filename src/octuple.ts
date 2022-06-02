@@ -72,6 +72,7 @@ import { Portal } from './components/Portal';
 import { RadioButton, RadioGroup } from './components/Selectors';
 
 import { useBoolean } from './hooks/useBoolean';
+import { createEaseAnimations } from './hooks/useAnimation';
 
 import { useMatchMedia } from './hooks/useMatchMedia';
 

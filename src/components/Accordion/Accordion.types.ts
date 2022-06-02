@@ -1,5 +1,6 @@
 import { OcBaseProps } from '../OcBase';
 import { IconProps } from '../Icon';
+import { Ref } from 'react';
 
 interface AccordionBaseProps extends OcBaseProps<HTMLSpanElement> {
     /**
@@ -12,6 +13,7 @@ interface AccordionBaseProps extends OcBaseProps<HTMLSpanElement> {
      * @default { path: IconName['mdiChevronDown'] }
      */
     expandIconProps?: IconProps;
+    ref?: Ref<HTMLDivElement>;
 }
 
 export interface AccordionProps extends AccordionBaseProps {

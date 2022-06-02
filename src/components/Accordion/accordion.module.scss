@@ -1,44 +1,59 @@
-.accordion-container {
-    border: 1px solid var(--grey-color-20);
-    border-radius: $corner-radius-s;
+.accordionWrapper {
+    position: relative;
+    min-height: 50px;
+    border: solid 1px #ccc;
+    border-radius: 8px;
+}
 
-    .accordion-body-container {
-        box-sizing: border-box;
-        max-height: 0;
-        overflow-y: auto;
-        transition: all $motion-duration-fast $motion-easing-easeout;
+.accordion-body-container {
+    box-sizing: border-box;
+    overflow-y: auto;
+}
 
-        &.show {
-            max-height: 500px;
-        }
+.accordion {
+    will-change: transform;
+    transform-origin: top center;
+    overflow: hidden;
+    contain: content;
+    will-change: transform;
+    animation-duration: 200ms;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+    position: absolute;
+
+    .main {
+        transform-origin: top center;
+        will-change: transform;
+        animation-duration: 200ms;
+        animation-timing-function: ease;
+        animation-fill-mode: forwards;
     }
+}
 
-    .accordion-body {
-        margin: 0 $space-l;
-        padding: $space-m 0;
+.accordion-summary {
+    padding: 16px;
+    border: none;
+    cursor: pointer;
+}
 
-        &.show-border-top {
-            border-top: 1px solid var(--grey-color-20);
-        }
-    }
+.accordion-body {
+    padding: 0 16px 16px;
+}
 
-    .accordion-summary {
-        cursor: pointer;
-        display: flex;
-        justify-content: space-between;
-        padding: $space-m $space-l;
-        width: 100%;
+.line {
+    margin-top: 2px;
+    margin-bottom: 16px;
+    border-bottom: solid 1px #ccc;
+}
 
-        &:focus-visible {
-            outline-color: var(--button-primary-focus-border-color);
-        }
-    }
+.accordion-expanded {
+    position: static;
+}
 
-    .accordion-icon {
-        transition: transform $motion-duration-fast;
+.accordion-icon {
+    transition: transform $motion-duration-fast;
 
-        &.expanded-icon {
-            transform: rotate(180deg);
-        }
+    &.expanded-icon {
+        transform: rotate(180deg);
     }
 }

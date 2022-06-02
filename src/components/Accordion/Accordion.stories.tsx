@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Stories } from '@storybook/addon-docs';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Badge } from '../Badge';
@@ -68,9 +68,10 @@ const listItems: {
     },
 ];
 
-const Single_Story: ComponentStory<typeof Accordion> = (args) => (
-    <Accordion {...args} />
-);
+const Single_Story: ComponentStory<typeof Accordion> = (args) => {
+    const accordionRef = useRef(null);
+    return <Accordion ref={accordionRef} {...args} />;
+};
 
 export const Single = Single_Story.bind({});
 
@@ -118,11 +119,14 @@ const listArgs: Object = {
         </>
     ),
     layout: 'vertical',
-    renderItem: (item: { summary: JSX.Element; body: string; id: string }) => (
-        <Accordion summary={item.summary} id={item.id}>
-            {item.body}
-        </Accordion>
-    ),
+    renderItem: (item: { summary: JSX.Element; body: string; id: string }) => {
+        const accordionRef = useRef(null);
+        return (
+            <Accordion ref={accordionRef} summary={item.summary} id={item.id}>
+                {item.body}
+            </Accordion>
+        );
+    },
     header: (
         <>
             <div style={{ paddingLeft: '16px' }}>
